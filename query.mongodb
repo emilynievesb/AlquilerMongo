@@ -464,7 +464,7 @@ db.alquiler.aggregate([
 ]);
 
 //!Mostrar todas las reservas pendientes con los datos del cliente y el automóvil reservado.
-use("db_campus_alquiler");
+// use("db_campus_alquiler");
 db.reserva.aggregate([
   { $match: { Estado: "Pendiente" } },
   {
@@ -524,3 +524,7 @@ db.reserva.aggregate([
     },
   },
 ]);
+
+//!Obtener los detalles del alquiler con el ID_Alquiler específico
+use("db_campus_alquiler");
+db.alquiler.find({ _id: 1 });
