@@ -1,0 +1,411 @@
+db.createCollection("sucursal");
+db.createCollection("sucursal_automovil");
+db.createCollection("automovil");
+db.createCollection("cliente");
+db.createCollection("empleado");
+db.createCollection("reserva");
+db.createCollection("alquiler");
+db.createCollection("registro-devolucion");
+db.createCollection("registro-entrega");
+
+db.sucursal.insertMany([
+  {
+    _id: 1,
+    Nombre: "Zona Franca",
+    Direccion: "Florida",
+    Telefono: 123456789,
+  },
+  {
+    _id: 2,
+    Nombre: "Centro Comercial Metropolis",
+    Direccion: "Avenida Principal, Ciudad",
+    Telefono: 987654321,
+  },
+  {
+    _id: 3,
+    Nombre: "Mall Plaza",
+    Direccion: "Calle Comercial, Pueblo",
+    Telefono: 246813579,
+  },
+  {
+    _id: 4,
+    Nombre: "Mega Shopping Center",
+    Direccion: "Avenida Central, Ciudad",
+    Telefono: 135792468,
+  },
+  {
+    _id: 5,
+    Nombre: "Galería del Este",
+    Direccion: "Calle Principal, Pueblo",
+    Telefono: 369852147,
+  },
+]);
+
+db.automovil.insertMany([
+  {
+    _id: 1,
+    Marca: "Mazda",
+    Modelo: "323NX",
+    Anio: 1995,
+    Tipo: "Sedán",
+    Capacidad: 5,
+    Precio_diario: 40000,
+  },
+  {
+    _id: 2,
+    Marca: "Toyota",
+    Modelo: "Corolla",
+    Anio: 2010,
+    Tipo: "Sedán",
+    Capacidad: 5,
+    Precio_diario: 45000,
+  },
+  {
+    _id: 3,
+    Marca: "Honda",
+    Modelo: "Civic",
+    Anio: 2015,
+    Tipo: "Sedán",
+    Capacidad: 5,
+    Precio_diario: 50000,
+  },
+  {
+    _id: 4,
+    Marca: "Chevrolet",
+    Modelo: "Spark",
+    Anio: 2018,
+    Tipo: "Compacto",
+    Capacidad: 4,
+    Precio_diario: 35000,
+  },
+  {
+    _id: 5,
+    Marca: "Ford",
+    Modelo: "Focus",
+    Anio: 2020,
+    Tipo: "Hatchback",
+    Capacidad: 5,
+    Precio_diario: 48000,
+  },
+]);
+
+db.sucursal_automovil.insertMany([
+  {
+    _id: 1,
+    ID_Sucursal: 1,
+    ID_Automovil: 1,
+    Cantidad_Disponible: 5,
+  },
+  {
+    _id: 2,
+    ID_Sucursal: 1,
+    ID_Automovil: 2,
+    Cantidad_Disponible: 3,
+  },
+  {
+    _id: 3,
+    ID_Sucursal: 2,
+    ID_Automovil: 3,
+    Cantidad_Disponible: 2,
+  },
+  {
+    _id: 4,
+    ID_Sucursal: 1,
+    ID_Automovil: 4,
+    Cantidad_Disponible: 7,
+  },
+  {
+    _id: 5,
+    ID_Sucursal: 3,
+    ID_Automovil: 5,
+    Cantidad_Disponible: 0,
+  },
+]);
+
+db.cliente.insertMany([
+  {
+    _id: 1,
+    Nombre: "Emily",
+    Apellido: "Nieves",
+    DNI: 123456789,
+    Direccion: "Calle 10",
+    Telefono: 3166666555,
+    Email: "emily@gmail.com",
+  },
+  {
+    _id: 2,
+    Nombre: "Carlos",
+    Apellido: "González",
+    DNI: 987654321,
+    Direccion: "Avenida 5",
+    Telefono: 3177777444,
+    Email: "carlos@example.com",
+  },
+  {
+    _id: 3,
+    Nombre: "Ana",
+    Apellido: "Martínez",
+    DNI: 456789123,
+    Direccion: "Calle 20",
+    Telefono: 3155555666,
+    Email: "ana@hotmail.com",
+  },
+  {
+    _id: 4,
+    Nombre: "Juan",
+    Apellido: "López",
+    DNI: 789123456,
+    Direccion: "Plaza Mayor",
+    Telefono: 3144444777,
+    Email: "juan@example.com",
+  },
+  {
+    _id: 5,
+    Nombre: "María",
+    Apellido: "Ramírez",
+    DNI: 654321987,
+    Direccion: "Avenida Principal",
+    Telefono: 3188888999,
+    Email: "maria@gmail.com",
+  },
+]);
+
+db.empleado.insertMany([
+  {
+    _id: 1,
+    Nombre: "Andrés",
+    Apellido: "Elizalde",
+    DNI: 56974210,
+    Direccion: "Calle Principal",
+    Telefono: 3188284099,
+    Cargo: "Cajero",
+  },
+  {
+    _id: 2,
+    Nombre: "Gabriela",
+    Apellido: "Soto",
+    DNI: 80236987,
+    Direccion: "Avenida Libertad",
+    Telefono: 3154896231,
+    Cargo: "Vendedor",
+  },
+  {
+    _id: 3,
+    Nombre: "Luis",
+    Apellido: "García",
+    DNI: 12457896,
+    Direccion: "Calle 7",
+    Telefono: 3125879632,
+    Cargo: "Supervisor",
+  },
+  {
+    _id: 4,
+    Nombre: "Laura",
+    Apellido: "Moreno",
+    DNI: 98745632,
+    Direccion: "Carrera 15",
+    Telefono: 3147895632,
+    Cargo: "Gerente",
+  },
+  {
+    _id: 5,
+    Nombre: "Jorge",
+    Apellido: "Pérez",
+    DNI: 36547821,
+    Direccion: "Avenida Central",
+    Telefono: 3112369875,
+    Cargo: "Asistente Administrativo",
+  },
+]);
+
+db.reserva.insertMany([
+  {
+    _id: 1,
+    ID_Cliente: 1,
+    ID_Automovil: 2,
+    Fecha_Reserva: "2023-12-20",
+    Fecha_Inicio: "2024-01-10",
+    Fecha_Fin: "2024-01-12",
+    Estado: "Confirmada",
+  },
+  {
+    _id: 2,
+    ID_Cliente: 2,
+    ID_Automovil: 3,
+    Fecha_Reserva: "2023-12-25",
+    Fecha_Inicio: "2024-02-05",
+    Fecha_Fin: "2024-02-10",
+    Estado: "Confirmada",
+  },
+  {
+    _id: 3,
+    ID_Cliente: 1,
+    ID_Automovil: 1,
+    Fecha_Reserva: "2023-12-30",
+    Fecha_Inicio: "2024-03-15",
+    Fecha_Fin: "2024-03-20",
+    Estado: "Pendiente",
+  },
+  {
+    _id: 4,
+    ID_Cliente: 3,
+    ID_Automovil: 4,
+    Fecha_Reserva: "2023-12-31",
+    Fecha_Inicio: "2024-04-01",
+    Fecha_Fin: "2024-04-05",
+    Estado: "Cancelada",
+  },
+  {
+    _id: 5,
+    ID_Cliente: 2,
+    ID_Automovil: 5,
+    Fecha_Reserva: "2023-12-31",
+    Fecha_Inicio: "2024-05-10",
+    Fecha_Fin: "2024-05-15",
+    Estado: "Confirmada",
+  },
+]);
+
+db.alquiler.insertMany([
+  {
+    _id: 1,
+    ID_Cliente: 2,
+    ID_Automovil: 5,
+    Fecha_Reserva: "2023-12-31",
+    Fecha_Inicio: "2024-05-10",
+    Fecha_Fin: "2024-05-15",
+    Costo_Total: 250000,
+    Estado: "Confirmada",
+  },
+  {
+    _id: 2,
+    ID_Cliente: 1,
+    ID_Automovil: 4,
+    Fecha_Reserva: "2023-12-25",
+    Fecha_Inicio: "2024-02-05",
+    Fecha_Fin: "2024-02-10",
+    Costo_Total: 180000,
+    Estado: "Confirmada",
+  },
+  {
+    _id: 3,
+    ID_Cliente: 3,
+    ID_Automovil: 1,
+    Fecha_Reserva: "2023-12-30",
+    Fecha_Inicio: "2024-03-15",
+    Fecha_Fin: "2024-03-20",
+    Costo_Total: 120000,
+    Estado: "Pendiente",
+  },
+  {
+    _id: 4,
+    ID_Cliente: 2,
+    ID_Automovil: 2,
+    Fecha_Reserva: "2023-12-31",
+    Fecha_Inicio: "2024-04-01",
+    Fecha_Fin: "2024-04-05",
+    Costo_Total: 90000,
+    Estado: "Cancelada",
+  },
+  {
+    _id: 5,
+    ID_Cliente: 1,
+    ID_Automovil: 3,
+    Fecha_Reserva: "2023-12-31",
+    Fecha_Inicio: "2024-05-10",
+    Fecha_Fin: "2024-05-15",
+    Costo_Total: 320000,
+    Estado: "Confirmada",
+  },
+]);
+
+db.registro_devolucion.insertMany([
+  {
+    _id: 1,
+    ID_Alquiler: 1,
+    ID_Empleado: 2,
+    Fecha_Devolucion: "2023-10-12",
+    Combustibele_Devuelto: 25,
+    Kilometraje_Devuelto: 120000,
+    Monto_Adicional: 98000,
+  },
+  {
+    _id: 2,
+    ID_Alquiler: 2,
+    ID_Empleado: 1,
+    Fecha_Devolucion: "2023-09-25",
+    Combustible_Devuelto: 20,
+    Kilometraje_Devuelto: 135000,
+    Monto_Adicional: 75000,
+  },
+  {
+    _id: 3,
+    ID_Alquiler: 3,
+    ID_Empleado: 3,
+    Fecha_Devolucion: "2023-11-05",
+    Combustible_Devuelto: 30,
+    Kilometraje_Devuelto: 110000,
+    Monto_Adicional: 60000,
+  },
+  {
+    _id: 4,
+    ID_Alquiler: 1,
+    ID_Empleado: 2,
+    Fecha_Devolucion: "2023-10-12",
+    Combustible_Devuelto: 20,
+    Kilometraje_Devuelto: 122000,
+    Monto_Adicional: 89000,
+  },
+  {
+    _id: 5,
+    ID_Alquiler: 4,
+    ID_Empleado: 1,
+    Fecha_Devolucion: "2023-12-20",
+    Combustible_Devuelto: 35,
+    Kilometraje_Devuelto: 140000,
+    Monto_Adicional: 55000,
+  },
+]);
+
+db.registro_entrega.insertMany([
+  {
+    _id: 1,
+    ID_Alquiler: 4,
+    ID_Empleado: 1,
+    Fecha_Entrega: "2023-12-20",
+    Combustible_Entregado: 60,
+    Kilometraje_Entregado: 10000,
+  },
+  {
+    _id: 2,
+    ID_Alquiler: 3,
+    ID_Empleado: 2,
+    Fecha_Entrega: "2023-11-05",
+    Combustible_Entregado: 40,
+    Kilometraje_Entregado: 8000,
+  },
+  {
+    _id: 3,
+    ID_Alquiler: 1,
+    ID_Empleado: 3,
+    Fecha_Entrega: "2023-10-12",
+    Combustible_Entregado: 55,
+    Kilometraje_Entregado: 9500,
+  },
+  {
+    _id: 4,
+    ID_Alquiler: 5,
+    ID_Empleado: 1,
+    Fecha_Entrega: "2023-12-31",
+    Combustible_Entregado: 70,
+    Kilometraje_Entregado: 11000,
+  },
+  {
+    _id: 5,
+    ID_Alquiler: 2,
+    ID_Empleado: 2,
+    Fecha_Entrega: "2023-09-25",
+    Combustible_Entregado: 45,
+    Kilometraje_Entregado: 8500,
+  },
+]);
