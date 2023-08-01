@@ -534,7 +534,7 @@ db.alquiler.find({ _id: 1 });
 db.empleado.find({ Cargo: "Vendedor" });
 
 //!Mostrar la cantidad total de automóviles disponibles en cada sucursal.
-use("db_campus_alquiler");
+// use("db_campus_alquiler");
 db.sucursal_automovil.aggregate([
   {
     $group: {
@@ -561,3 +561,12 @@ db.sucursal_automovil.aggregate([
     },
   },
 ]);
+
+//!Obtener el costo total de un alquiler específico.
+use("db_campus_alquiler");
+db.alquiler.find(
+  { _id: 1 },
+  {
+    Costo_Total: 1,
+  }
+);
