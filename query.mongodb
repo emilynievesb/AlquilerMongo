@@ -586,3 +586,7 @@ db.alquiler.find({ Fecha_Reserva: "2023-12-31" });
 //!Listar las reservas pendientes realizadas por un cliente específico.
 // use("db_campus_alquiler");
 db.reserva.find({ ID_Cliente: 1, Estado: "Pendiente" });
+
+//!Mostrar los empleados con cargo de "Gerente" o "Asistente".
+// use("db_campus_alquiler");
+db.empleado.find({ Cargo: "Gerente" });
