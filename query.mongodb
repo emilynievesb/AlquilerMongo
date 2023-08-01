@@ -1,3 +1,5 @@
+use("db_campus_alquiler");
+
 db.createCollection("sucursal");
 db.createCollection("sucursal_automovil");
 db.createCollection("automovil");
@@ -416,5 +418,47 @@ db.registro_entrega.insertMany([
 db.cliente.find({});
 
 //!Obtener todos los automóviles disponibles para alquiler
-use("db_campus_alquiler");
+// use("db_campus_alquiler");
 db.sucursal_automovil.find({ Cantidad_Disponible: { $gt: 0 } });
+
+//!Listar todos los alquileres activos junto con los datos de los clientes relacionados
+use("db_campus_alquiler");
+db.alquiler.aggregate([
+  { $match: { Estado: "Confirmada" } },
+  {
+    $lookup: {
+      from: "cliente",
+      localField: "ID_Cliente", //id a comparar en la tabla alquiler
+      foreignField: "_id", //id a comparar en la tabla cliente
+      as: "cliente_info",
+    },
+  },
+  {
+    $unwind: "$cliente_info",
+  },
+  {
+    $group: {
+      _id: "$ID_Cliente",
+      cliente_info: { $first: "$cliente_info" },
+      alquileres: {
+        $push: {
+          ID_Alquiler: "$ID_Alquiler",
+          Fecha_Inicio: "$Fecha_Inicio",
+          Fecha_Fin: "$Fecha_Fin",
+          Estado: "$Estado",
+        },
+      },
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      cliente_info: {
+        Name: "$cliente_info.Nombre",
+        Lastname: "$cliente_info.Apellido",
+        Document: "$cliente_info.DNI",
+      },
+      alquileres: 1,
+    },
+  },
+]);
