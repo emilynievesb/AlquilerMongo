@@ -580,5 +580,9 @@ db.cliente.find({ DNI: 654321987 });
 db.automovil.find({ Capacidad: { $gte: 5 } });
 
 //!Obtener los detalles del alquiler que tiene fecha de inicio en '2023-12-31'
-use("db_campus_alquiler");
+// use("db_campus_alquiler");
 db.alquiler.find({ Fecha_Reserva: "2023-12-31" });
+
+//!Listar las reservas pendientes realizadas por un cliente específico.
+// use("db_campus_alquiler");
+db.reserva.find({ ID_Cliente: 1, Estado: "Pendiente" });
