@@ -409,3 +409,8 @@ db.registro_entrega.insertMany([
     Kilometraje_Entregado: 8500,
   },
 ]);
+
+/***************CONSULTASSSSSSSSSSSS */
+//!Mostrar todos los clientes registrados en la base de datos.
+use("db_campus_alquiler");
+db.cliente.find({});
