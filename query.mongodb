@@ -412,5 +412,9 @@ db.registro_entrega.insertMany([
 
 /***************CONSULTASSSSSSSSSSSS */
 //!Mostrar todos los clientes registrados en la base de datos.
-use("db_campus_alquiler");
+// use("db_campus_alquiler");
 db.cliente.find({});
+
+//!Obtener todos los automóviles disponibles para alquiler
+use("db_campus_alquiler");
+db.sucursal_automovil.find({ Cantidad_Disponible: { $gt: 0 } });
