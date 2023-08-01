@@ -590,3 +590,27 @@ db.reserva.find({ ID_Cliente: 1, Estado: "Pendiente" });
 //!Mostrar los empleados con cargo de "Gerente" o "Asistente".
 // use("db_campus_alquiler");
 db.empleado.find({ Cargo: "Gerente" });
+
+//!Obtener los datos de los clientes que realizaron al menos un alquiler
+use("db_campus_alquiler");
+db.alquiler.aggregate([
+  {
+    $lookup: {
+      from: "cliente",
+      localField: "ID_Cliente",
+      foreignField: "_id",
+      as: "datos-cliente",
+    },
+  },
+  {
+    $unwind: "$datos-cliente",
+  },
+  {
+    $project: {
+      Fecha_Inicio: "$Fecha_Inicio",
+      Fecha_Fin: "$Fecha_Fin",
+      Estado: "$Estado",
+      Cliente: "$datos-cliente",
+    },
+  },
+]);
