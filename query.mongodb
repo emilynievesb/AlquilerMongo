@@ -592,7 +592,7 @@ db.reserva.find({ ID_Cliente: 1, Estado: "Pendiente" });
 db.empleado.find({ Cargo: "Gerente" });
 
 //!Obtener los datos de los clientes que realizaron al menos un alquiler
-use("db_campus_alquiler");
+// use("db_campus_alquiler");
 db.alquiler.aggregate([
   {
     $lookup: {
@@ -614,3 +614,7 @@ db.alquiler.aggregate([
     },
   },
 ]);
+
+//!Listar todos los automóviles ordenados por marca y modelo
+// use("db_campus_alquiler");
+db.automovil.find().sort({ Marca: -1, Modelo: -1 });
