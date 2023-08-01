@@ -563,10 +563,14 @@ db.sucursal_automovil.aggregate([
 ]);
 
 //!Obtener el costo total de un alquiler específico.
-use("db_campus_alquiler");
+// use("db_campus_alquiler");
 db.alquiler.find(
   { _id: 1 },
   {
     Costo_Total: 1,
   }
 );
+
+//!Listar los clientes con el DNI específico.
+use("db_campus_alquiler");
+db.cliente.find({ DNI: 654321987 });
