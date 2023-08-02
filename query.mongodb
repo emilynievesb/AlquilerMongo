@@ -686,8 +686,32 @@ db.sucursal_automovil.aggregate([
   },
 ]);
 
-//!Listar los alquileres con fecha de inicio entre '2024-03-05' y '2024-03-20'
+//!Obtener los datos del cliente que realizó la reserva con ID_Reserva específico.
 use("db_campus_alquiler");
+db.reserva.aggregate([
+  {
+    $match: { _id: 1 },
+  },
+  {
+    $lookup: {
+      from: "cliente",
+      localField: "ID_Cliente",
+      foreignField: "_id",
+      as: "cliente_info",
+    },
+  },
+  {
+    $project: {
+      Fecha_Inicio: "$Fecha_Inicio",
+      Fecha_Fin: "$Fecha_Fin",
+      Estado: "$Estado",
+      Cliente: "$cliente_info",
+    },
+  },
+]);
+
+//!Listar los alquileres con fecha de inicio entre '2024-03-05' y '2024-03-20'
+// use("db_campus_alquiler");
 db.alquiler.find({
   Fecha_Inicio: {
     $gte: "2024-01-05",
