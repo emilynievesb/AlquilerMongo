@@ -652,3 +652,36 @@ db.sucursal_automovil.aggregate([
 //!Obtener la cantidad total de alquileres registrados en la base de datos.
 // use("db_campus_alquiler");
 db.alquiler.countDocuments();
+
+//!Mostrar los automóviles con capacidad igual a 5 personas y que estén disponibles.
+use("db_campus_alquiler");
+db.sucursal_automovil.aggregate([
+  {
+    $match: { Cantidad_Disponible: { $gt: 0 } }, // Filtrar solo los automóviles disponibles (Cantidad_Disponible > 0)
+  },
+  {
+    $lookup: {
+      from: "automovil",
+      localField: "ID_Automovil",
+      foreignField: "_id",
+      as: "automovil",
+    },
+  },
+  {
+    $unwind: "$automovil",
+  },
+  {
+    $match: { "automovil.Capacidad": 5 }, // Filtrar los automóviles con capacidad igual a 5
+  },
+  {
+    $project: {
+      _id: 0,
+      Marca: "$automovil.Marca",
+      Modelo: "$automovil.Modelo",
+      Anio: "$automovil.Anio",
+      Tipo: "$automovil.Tipo",
+      Capacidad: "$automovil.Capacidad",
+      Precio_diario: "$automovil.Precio_diario",
+    },
+  },
+]);
