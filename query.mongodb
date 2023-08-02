@@ -7,8 +7,8 @@ db.createCollection("cliente");
 db.createCollection("empleado");
 db.createCollection("reserva");
 db.createCollection("alquiler");
-db.createCollection("registro-devolucion");
-db.createCollection("registro-entrega");
+db.createCollection("registro_devolucion");
+db.createCollection("registro_entrega");
 
 db.sucursal.insertMany([
   {
@@ -687,7 +687,7 @@ db.sucursal_automovil.aggregate([
 ]);
 
 //!Obtener los datos del cliente que realizó la reserva con ID_Reserva específico.
-use("db_campus_alquiler");
+// use("db_campus_alquiler");
 db.reserva.aggregate([
   {
     $match: { _id: 1 },
