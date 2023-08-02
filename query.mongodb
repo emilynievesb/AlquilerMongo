@@ -654,7 +654,7 @@ db.sucursal_automovil.aggregate([
 db.alquiler.countDocuments();
 
 //!Mostrar los automóviles con capacidad igual a 5 personas y que estén disponibles.
-use("db_campus_alquiler");
+// use("db_campus_alquiler");
 db.sucursal_automovil.aggregate([
   {
     $match: { Cantidad_Disponible: { $gt: 0 } }, // Filtrar solo los automóviles disponibles (Cantidad_Disponible > 0)
@@ -685,3 +685,12 @@ db.sucursal_automovil.aggregate([
     },
   },
 ]);
+
+//!Listar los alquileres con fecha de inicio entre '2024-03-05' y '2024-03-20'
+use("db_campus_alquiler");
+db.alquiler.find({
+  Fecha_Inicio: {
+    $gte: "2024-01-05",
+    $lte: "2024-06-10",
+  },
+});
