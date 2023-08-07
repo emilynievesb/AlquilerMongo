@@ -2,6 +2,7 @@ import {
   obtenerAlquileresActivos,
   obtenerCarrosDisponibles,
   obtenerClientes,
+  obtenerDetallesAlquiler,
   obtenerReservasPendientes,
 } from "../services/getServices.js";
 
@@ -41,9 +42,20 @@ const obtenerReservasPendientesController = async (req, res, next) => {
   }
 };
 
+const obtenerDetallesAlquilerController = async (req, res, next) => {
+  try {
+    const { id } = req.query;
+    const detalles = await obtenerDetallesAlquiler(id);
+    res.status(200).json(detalles);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   obtenerClientesController,
   obtenerCarrosDisponiblesController,
   obtenerAlquileresActivosController,
   obtenerReservasPendientesController,
+  obtenerDetallesAlquilerController,
 };

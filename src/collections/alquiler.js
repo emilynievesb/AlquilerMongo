@@ -1,6 +1,13 @@
 import connection from "../utils/connect.js";
 
 class Alquiler {
+  id;
+  ID_Cliente;
+  ID_Automovil;
+  Fecha_Reserva;
+  Fecha_Inicio;
+  Fecha_Fin;
+  Estado;
   constructor() {}
   async connect() {
     try {
@@ -53,6 +60,17 @@ class Alquiler {
             },
           },
         ])
+        .toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async buscarDetallesAlquiler() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection
+        .find({ _id: Number(this.id) })
         .toArray();
       return resultado;
     } catch (error) {

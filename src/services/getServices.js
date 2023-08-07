@@ -23,9 +23,16 @@ const obtenerReservasPendientes = async () => {
   return reserva.buscarReservasPendientes();
 };
 
+const obtenerDetallesAlquiler = async (id) => {
+  const alquiler = new Alquiler();
+  alquiler.id = id;
+  return alquiler.buscarDetallesAlquiler();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
   obtenerAlquileresActivos,
   obtenerReservasPendientes,
+  obtenerDetallesAlquiler,
 };
