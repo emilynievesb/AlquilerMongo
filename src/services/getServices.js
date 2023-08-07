@@ -1,3 +1,4 @@
+import { Alquiler } from "../collections/alquiler.js";
 import Cliente from "../collections/cliente.js";
 import Sucursal_automovil from "../collections/sucursal_automovil.js";
 
@@ -11,4 +12,9 @@ const obtenerCarrosDisponibles = async () => {
   return sucursal_automovil.obtenerCarrosDisponibles();
 };
 
-export { obtenerClientes, obtenerCarrosDisponibles };
+const obtenerAlquileresActivos = async () => {
+  const alquiler = new Alquiler();
+  return alquiler.buscarAlquileresActivos();
+};
+
+export { obtenerClientes, obtenerCarrosDisponibles, obtenerAlquileresActivos };
