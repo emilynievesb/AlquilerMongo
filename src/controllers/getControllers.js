@@ -2,6 +2,7 @@ import {
   obtenerAlquileresActivos,
   obtenerCarrosDisponibles,
   obtenerClientes,
+  obtenerReservasPendientes,
 } from "../services/getServices.js";
 
 const obtenerClientesController = async (req, res, next) => {
@@ -31,8 +32,18 @@ const obtenerAlquileresActivosController = async (req, res, next) => {
   }
 };
 
+const obtenerReservasPendientesController = async (req, res, next) => {
+  try {
+    const reservas = await obtenerReservasPendientes();
+    res.status(200).json(reservas);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   obtenerClientesController,
   obtenerCarrosDisponiblesController,
   obtenerAlquileresActivosController,
+  obtenerReservasPendientesController,
 };
