@@ -4,6 +4,7 @@ import {
   obtenerClientes,
   obtenerDetallesAlquiler,
   obtenerReservasPendientes,
+  obtenerVendedores,
 } from "../services/getServices.js";
 
 const obtenerClientesController = async (req, res, next) => {
@@ -52,10 +53,20 @@ const obtenerDetallesAlquilerController = async (req, res, next) => {
   }
 };
 
+const obtenerVendedoresController = async (req, res, next) => {
+  try {
+    const vendedores = await obtenerVendedores();
+    res.status(200).json(vendedores);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   obtenerClientesController,
   obtenerCarrosDisponiblesController,
   obtenerAlquileresActivosController,
   obtenerReservasPendientesController,
   obtenerDetallesAlquilerController,
+  obtenerVendedoresController,
 };

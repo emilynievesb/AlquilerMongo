@@ -5,6 +5,7 @@ import {
   obtenerClientesController,
   obtenerDetallesAlquilerController,
   obtenerReservasPendientesController,
+  obtenerVendedoresController,
 } from "../controllers/getControllers.js";
 
 const getInitRoute = () => {
@@ -14,6 +15,7 @@ const getInitRoute = () => {
   router.get("/obtenerAlquileresActivos", obtenerAlquileresActivosController);
   router.get("/obtenerReservasPendientes", obtenerReservasPendientesController);
   router.get("/obtenerDetallesAlquiler", obtenerDetallesAlquilerController);
+  router.get("/obtenerVendedores", obtenerVendedoresController);
   return router;
 };
 
