@@ -10,8 +10,7 @@ export default async function connection(col) {
     };
     const client = await MongoClient.connect(url, options);
     const data = client.db();
-    const res = data.collection(`${col}`);
-    console.log(res);
+    const res = data.collection(col);
     return res;
   } catch (error) {
     return { status: 500, message: error };
