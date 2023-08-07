@@ -10,12 +10,20 @@ export default class Cliente {
   Email;
   constructor() {}
   async connect() {
-    const result = await connection("cliente");
-    return result;
+    try {
+      const result = await connection("cliente");
+      return result;
+    } catch (error) {
+      throw error;
+    }
   }
   async buscarClientes() {
-    const connection = await this.connect();
-    const resultado = await connection.find({}).toArray();
-    return resultado;
+    try {
+      const connection = await this.connect();
+      const resultado = await connection.find({}).toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
   }
 }
