@@ -19,6 +19,15 @@ class Empleado {
       throw error;
     }
   }
+  async obtenerGerentes() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection.find({ Cargo: "Gerente" }).toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export { Empleado };
