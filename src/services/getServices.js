@@ -79,6 +79,11 @@ const obtenerClientesConAlquiler = async () => {
   return await alquiler.clientesConUnAlquiler();
 };
 
+const obtenerCarros = async () => {
+  const carros = new Automovil();
+  return await carros.obtenerCarros();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -94,4 +99,5 @@ export {
   obtenerReservasPendientesCliente,
   obtenerGerentes,
   obtenerClientesConAlquiler,
+  obtenerCarros,
 };

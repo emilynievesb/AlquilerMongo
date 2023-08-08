@@ -21,6 +21,18 @@ class Automovil {
       throw error;
     }
   }
+  async obtenerCarros() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection
+        .find()
+        .sort({ Marca: 1, Modelo: 1 })
+        .toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export { Automovil };
