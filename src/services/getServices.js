@@ -63,6 +63,12 @@ const obtenerAlquilerFechaInicio = async () => {
   return await alquiler.obtenerAlquilerFechaInicio();
 };
 
+const obtenerReservasPendientesCliente = async (id) => {
+  const reservas = new Reserva();
+  reservas.ID_Cliente = id;
+  return await reservas.obtenerReservasPendientesCliente();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -75,4 +81,5 @@ export {
   obtenerClienteDNI,
   obtenerCarrosGrandes,
   obtenerAlquilerFechaInicio,
+  obtenerReservasPendientesCliente,
 };

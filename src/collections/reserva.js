@@ -1,6 +1,13 @@
 import connection from "../utils/connect.js";
 
 class Reserva {
+  _id;
+  ID_Cliente;
+  ID_Automovil;
+  Fecha_Reserva;
+  Fecha_Inicio;
+  Fecha_Fin;
+  Estado;
   constructor() {}
   async connect() {
     try {
@@ -69,6 +76,50 @@ class Reserva {
               },
               vehiculos: {
                 $push: "$Vehiculo",
+              },
+            },
+          },
+        ])
+        .toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async obtenerReservasPendientesCliente() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection
+        .aggregate([
+          {
+            $match: {
+              ID_Cliente: Number(this.ID_Cliente),
+              Estado: "Pendiente",
+            },
+          },
+          {
+            $lookup: {
+              from: "cliente",
+              localField: "ID_Cliente",
+              foreignField: "_id",
+              as: "cliente_info",
+            },
+          },
+          {
+            $unwind: "$cliente_info",
+          },
+          {
+            $project: {
+              _id: 0,
+              Reserva: {
+                ID_Reserva: "$_id",
+                Fecha_Inicio: "$Fecha_Inicio",
+                Fecha_Fin: "$Fecha_Fin",
+              },
+              Cliente: {
+                Nombre: "$cliente_info.Nombre",
+                Apellido: "$cliente_info.Apellido",
+                DNI: "$cliente_info.DNI",
               },
             },
           },
