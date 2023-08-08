@@ -21,45 +21,123 @@ import {
   obtenerReservasPendientesController,
   obtenerVendedoresController,
 } from "../controllers/getControllers.js";
+import { limitPets, limitSize } from "../utils/limit.js";
 
 const getInitRoute = () => {
   const router = Router();
-  router.get("/obtenerClientes", obtenerClientesController);
-  router.get("/obtenerCarrosDisponibles", obtenerCarrosDisponiblesController);
-  router.get("/obtenerAlquileresActivos", obtenerAlquileresActivosController);
-  router.get("/obtenerReservasPendientes", obtenerReservasPendientesController);
-  router.get("/obtenerDetallesAlquiler", obtenerDetallesAlquilerController);
-  router.get("/obtenerVendedores", obtenerVendedoresController);
-  router.get("/numeroAutosDisponibles", obtenerNumeroCarrosController);
-  router.get("/obtenerCostoAlquiler", obtenerCostoAlquilerController);
-  router.get("/obtenerClienteDNI", obtenerClienteDNIController);
-  router.get("/obtenerCarrosGrandes", obtenerCarrosGrandesController);
+  router.get(
+    "/obtenerClientes",
+    limitPets,
+    limitSize,
+    obtenerClientesController
+  );
+  router.get(
+    "/obtenerCarrosDisponibles",
+    limitPets,
+    limitSize,
+    obtenerCarrosDisponiblesController
+  );
+  router.get(
+    "/obtenerAlquileresActivos",
+    limitPets,
+    limitSize,
+    obtenerAlquileresActivosController
+  );
+  router.get(
+    "/obtenerReservasPendientes",
+    limitPets,
+    limitSize,
+    obtenerReservasPendientesController
+  );
+  router.get(
+    "/obtenerDetallesAlquiler",
+    limitPets,
+    limitSize,
+    obtenerDetallesAlquilerController
+  );
+  router.get(
+    "/obtenerVendedores",
+    limitPets,
+    limitSize,
+    obtenerVendedoresController
+  );
+  router.get(
+    "/numeroAutosDisponibles",
+    limitPets,
+    limitSize,
+    obtenerNumeroCarrosController
+  );
+  router.get(
+    "/obtenerCostoAlquiler",
+    limitPets,
+    limitSize,
+    obtenerCostoAlquilerController
+  );
+  router.get(
+    "/obtenerClienteDNI",
+    limitPets,
+    limitSize,
+    obtenerClienteDNIController
+  );
+  router.get(
+    "/obtenerCarrosGrandes",
+    limitPets,
+    limitSize,
+    obtenerCarrosGrandesController
+  );
   router.get(
     "/obtenerAlquilerFechaInicio",
+    limitPets,
+    limitSize,
     obtenerAlquilerFechaInicioController
   );
   router.get(
     "/obtenerReservasPendientesCliente",
+    limitPets,
+    limitSize,
     obtenerReservasPendientesClienteController
   );
-  router.get("/obtenerGerentes", obtenerGerentesController);
+  router.get(
+    "/obtenerGerentes",
+    limitPets,
+    limitSize,
+    obtenerGerentesController
+  );
   router.get(
     "/obtenerClientesConAlquiler",
+    limitPets,
+    limitSize,
     obtenerClientesConAlquilerController
   );
-  router.get("/obtenerCarros", obtenerCarrosController);
+  router.get("/obtenerCarros", limitPets, limitSize, obtenerCarrosController);
   router.get(
     "/obtenerNumeroCarrosSucursal",
+    limitPets,
+    limitSize,
     obtenerNumeroCarrosSucursalController
   );
-  router.get("/obtenerNumeroAlquileres", obtenerNumeroAlquileresController);
+  router.get(
+    "/obtenerNumeroAlquileres",
+    limitPets,
+    limitSize,
+    obtenerNumeroAlquileresController
+  );
   router.get(
     "/obtenerCarrosGrandesDisponibles",
+    limitPets,
+    limitSize,
     obtenerCarrosGrandesDisponiblesController
   );
-  router.get("/obtenerClienteDeReserva", obtenerClienteReservaController);
+  router.get(
+    "/obtenerClienteDeReserva",
+    limitPets,
+    limitSize,
+    obtenerClienteReservaController
+  );
   router.get(
     "/obtenerAlquileresEntreFechas",
+    limitPets,
+    limitSize,
     obtenerAlquileresEntreFechasController
   );
   return router;
