@@ -77,6 +77,17 @@ class Alquiler {
       throw error;
     }
   }
+  async obtenerCostoAlquiler() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection
+        .find({ _id: Number(this.id) })
+        .toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export { Alquiler };

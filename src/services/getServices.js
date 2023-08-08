@@ -40,6 +40,12 @@ const obtenerNumeroCarros = async () => {
   return sucursal_automovil.obtenerNumeroCarros();
 };
 
+const obtenerCostoAlquiler = async (id) => {
+  const alquiler = new Alquiler();
+  alquiler.id = id;
+  return alquiler.obtenerCostoAlquiler();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -48,4 +54,5 @@ export {
   obtenerDetallesAlquiler,
   obtenerVendedores,
   obtenerNumeroCarros,
+  obtenerCostoAlquiler,
 };
