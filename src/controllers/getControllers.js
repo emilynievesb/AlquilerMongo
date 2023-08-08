@@ -11,6 +11,7 @@ import {
   obtenerDetallesAlquiler,
   obtenerGerentes,
   obtenerNumeroCarros,
+  obtenerNumeroCarrosSucursal,
   obtenerReservasPendientes,
   obtenerReservasPendientesCliente,
   obtenerVendedores,
@@ -154,6 +155,14 @@ const obtenerCarrosController = async (req, res, next) => {
     res.status(500).json(error);
   }
 };
+const obtenerNumeroCarrosSucursalController = async (req, res, next) => {
+  try {
+    const numero = await obtenerNumeroCarrosSucursal();
+    res.status(200).json(numero);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
 export {
   obtenerClientesController,
@@ -171,4 +180,5 @@ export {
   obtenerGerentesController,
   obtenerClientesConAlquilerController,
   obtenerCarrosController,
+  obtenerNumeroCarrosSucursalController,
 };
