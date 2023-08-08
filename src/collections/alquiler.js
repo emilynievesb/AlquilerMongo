@@ -99,6 +99,37 @@ class Alquiler {
       throw error;
     }
   }
+  async clientesConUnAlquiler() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection
+        .aggregate([
+          {
+            $lookup: {
+              from: "cliente",
+              localField: "ID_Cliente",
+              foreignField: "_id",
+              as: "datos-cliente",
+            },
+          },
+          {
+            $unwind: "$datos-cliente",
+          },
+          {
+            $project: {
+              Fecha_Inicio: "$Fecha_Inicio",
+              Fecha_Fin: "$Fecha_Fin",
+              Estado: "$Estado",
+              Cliente: "$datos-cliente",
+            },
+          },
+        ])
+        .toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export { Alquiler };

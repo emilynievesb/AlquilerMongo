@@ -74,6 +74,11 @@ const obtenerGerentes = async () => {
   return await empleado.obtenerGerentes();
 };
 
+const obtenerClientesConAlquiler = async () => {
+  const alquiler = new Alquiler();
+  return await alquiler.clientesConUnAlquiler();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -88,4 +93,5 @@ export {
   obtenerAlquilerFechaInicio,
   obtenerReservasPendientesCliente,
   obtenerGerentes,
+  obtenerClientesConAlquiler,
 };
