@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   obtenerAlquileresActivosController,
   obtenerCarrosDisponiblesController,
+  obtenerCarrosGrandesController,
   obtenerClienteDNIController,
   obtenerClientesController,
   obtenerCostoAlquilerController,
@@ -22,6 +23,7 @@ const getInitRoute = () => {
   router.get("/numeroAutosDisponibles", obtenerNumeroCarrosController);
   router.get("/obtenerCostoAlquiler", obtenerCostoAlquilerController);
   router.get("/obtenerClienteDNI", obtenerClienteDNIController);
+  router.get("/obtenerCarrosGrandes", obtenerCarrosGrandesController);
   return router;
 };
 
