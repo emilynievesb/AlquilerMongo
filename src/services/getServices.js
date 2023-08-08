@@ -99,6 +99,12 @@ const obtenerCarrosGrandesDisponibles = async () => {
   return await carros.obtenerCarrosGrandesDisponibles();
 };
 
+const obtenerClienteReserva = async (id) => {
+  const reserva = new Reserva();
+  reserva._id = id;
+  return await reserva.obtenerClienteReserva();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -118,4 +124,5 @@ export {
   obtenerNumeroCarrosSucursal,
   obtenerNumeroAlquileres,
   obtenerCarrosGrandesDisponibles,
+  obtenerClienteReserva,
 };

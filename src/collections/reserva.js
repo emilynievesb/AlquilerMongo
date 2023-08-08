@@ -130,5 +130,36 @@ class Reserva {
       throw error;
     }
   }
+  async obtenerClienteReserva() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection
+        .aggregate([
+          {
+            $match: { _id: Number(this._id) },
+          },
+          {
+            $lookup: {
+              from: "cliente",
+              localField: "ID_Cliente",
+              foreignField: "_id",
+              as: "cliente_info",
+            },
+          },
+          {
+            $project: {
+              Fecha_Inicio: "$Fecha_Inicio",
+              Fecha_Fin: "$Fecha_Fin",
+              Estado: "$Estado",
+              Cliente: "$cliente_info",
+            },
+          },
+        ])
+        .toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 export { Reserva };
