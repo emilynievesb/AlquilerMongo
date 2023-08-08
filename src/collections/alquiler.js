@@ -139,6 +139,22 @@ class Alquiler {
       throw error;
     }
   }
+  async obtenerAlquileresEntreFechas() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection
+        .find({
+          Fecha_Inicio: {
+            $gte: "2024-01-05",
+            $lte: "2024-06-10",
+          },
+        })
+        .toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export { Alquiler };

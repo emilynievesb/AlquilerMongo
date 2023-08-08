@@ -1,6 +1,7 @@
 import {
   obtenerAlquilerFechaInicio,
   obtenerAlquileresActivos,
+  obtenerAlquileresEntreFechas,
   obtenerCarros,
   obtenerCarrosDisponibles,
   obtenerCarrosGrandes,
@@ -195,6 +196,15 @@ const obtenerClienteReservaController = async (req, res, next) => {
   }
 };
 
+const obtenerAlquileresEntreFechasController = async (req, res, next) => {
+  try {
+    const alquileres = await obtenerAlquileresEntreFechas();
+    res.status(200).json(alquileres);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   obtenerClientesController,
   obtenerCarrosDisponiblesController,
@@ -215,4 +225,5 @@ export {
   obtenerNumeroAlquileresController,
   obtenerCarrosGrandesDisponiblesController,
   obtenerClienteReservaController,
+  obtenerAlquileresEntreFechasController,
 };

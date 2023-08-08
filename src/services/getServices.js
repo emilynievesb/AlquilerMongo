@@ -105,6 +105,11 @@ const obtenerClienteReserva = async (id) => {
   return await reserva.obtenerClienteReserva();
 };
 
+const obtenerAlquileresEntreFechas = async () => {
+  const alquileres = new Alquiler();
+  return await alquileres.obtenerAlquileresEntreFechas();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -125,4 +130,5 @@ export {
   obtenerNumeroAlquileres,
   obtenerCarrosGrandesDisponibles,
   obtenerClienteReserva,
+  obtenerAlquileresEntreFechas,
 };
