@@ -35,6 +35,11 @@ const obtenerVendedores = async () => {
   return empleado.obtenerVendedores();
 };
 
+const obtenerNumeroCarros = async () => {
+  const sucursal_automovil = new Sucursal_automovil();
+  return sucursal_automovil.obtenerNumeroCarros();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -42,4 +47,5 @@ export {
   obtenerReservasPendientes,
   obtenerDetallesAlquiler,
   obtenerVendedores,
+  obtenerNumeroCarros,
 };

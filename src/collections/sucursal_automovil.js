@@ -61,4 +61,41 @@ export default class Sucursal_automovil {
       throw error;
     }
   }
+  async obtenerNumeroCarros() {
+    try {
+      const connection = await this.connect();
+      const result = await connection
+        .aggregate([
+          {
+            $group: {
+              _id: "$ID_Sucursal",
+              Cantidad_Total_Disponible: { $sum: "$Cantidad_Disponible" },
+            },
+          },
+          {
+            $lookup: {
+              from: "sucursal",
+              localField: "_id",
+              foreignField: "_id",
+              as: "sucursal_info",
+            },
+          },
+          {
+            $unwind: "$sucursal_info",
+          },
+          {
+            $project: {
+              _id: 0,
+              Sucursal: "$sucursal_info.Nombre",
+              Cantidad_Total_Disponible: 1,
+            },
+          },
+        ])
+        .toArray();
+      console.log(result);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
