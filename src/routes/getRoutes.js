@@ -5,6 +5,7 @@ import {
   obtenerCarrosController,
   obtenerCarrosDisponiblesController,
   obtenerCarrosGrandesController,
+  obtenerCarrosGrandesDisponiblesController,
   obtenerClienteDNIController,
   obtenerClientesConAlquilerController,
   obtenerClientesController,
@@ -50,6 +51,10 @@ const getInitRoute = () => {
     obtenerNumeroCarrosSucursalController
   );
   router.get("/obtenerNumeroAlquileres", obtenerNumeroAlquileresController);
+  router.get(
+    "/obtenerCarrosGrandesDisponibles",
+    obtenerCarrosGrandesDisponiblesController
+  );
   return router;
 };
 

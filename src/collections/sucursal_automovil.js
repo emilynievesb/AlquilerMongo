@@ -136,4 +136,45 @@ export default class Sucursal_automovil {
       throw error;
     }
   }
+  async obtenerCarrosGrandesDisponibles() {
+    try {
+      const connection = await this.connect();
+      const result = await connection
+        .aggregate([
+          {
+            $match: { Cantidad_Disponible: { $gt: 0 } }, // Filtrar solo los automóviles disponibles (Cantidad_Disponible > 0)
+          },
+          {
+            $lookup: {
+              from: "automovil",
+              localField: "ID_Automovil",
+              foreignField: "_id",
+              as: "automovil",
+            },
+          },
+          {
+            $unwind: "$automovil",
+          },
+          {
+            $match: { "automovil.Capacidad": 5 }, // Filtrar los automóviles con capacidad igual a 5
+          },
+          {
+            $project: {
+              _id: 0,
+              Marca: "$automovil.Marca",
+              Modelo: "$automovil.Modelo",
+              Anio: "$automovil.Anio",
+              Tipo: "$automovil.Tipo",
+              Capacidad: "$automovil.Capacidad",
+              Precio_diario: "$automovil.Precio_diario",
+            },
+          },
+        ])
+        .toArray();
+      console.log(result);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
