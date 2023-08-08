@@ -46,6 +46,12 @@ const obtenerCostoAlquiler = async (id) => {
   return alquiler.obtenerCostoAlquiler();
 };
 
+const obtenerClienteDNI = async (DNI) => {
+  const cliente = new Cliente();
+  cliente.DNI = DNI;
+  return cliente.buscarClienteDNI();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -55,4 +61,5 @@ export {
   obtenerVendedores,
   obtenerNumeroCarros,
   obtenerCostoAlquiler,
+  obtenerClienteDNI,
 };

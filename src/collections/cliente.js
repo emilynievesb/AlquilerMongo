@@ -26,4 +26,15 @@ export default class Cliente {
       throw error;
     }
   }
+  async buscarClienteDNI() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection
+        .find({ DNI: Number(this.DNI) })
+        .toArray();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

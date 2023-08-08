@@ -1,6 +1,7 @@
 import {
   obtenerAlquileresActivos,
   obtenerCarrosDisponibles,
+  obtenerClienteDNI,
   obtenerClientes,
   obtenerCostoAlquiler,
   obtenerDetallesAlquiler,
@@ -83,6 +84,16 @@ const obtenerCostoAlquilerController = async (req, res, next) => {
   }
 };
 
+const obtenerClienteDNIController = async (req, res, next) => {
+  try {
+    const { DNI } = req.query;
+    const cliente = await obtenerClienteDNI(DNI);
+    res.status(200).json(cliente);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   obtenerClientesController,
   obtenerCarrosDisponiblesController,
@@ -92,4 +103,5 @@ export {
   obtenerVendedoresController,
   obtenerNumeroCarrosController,
   obtenerCostoAlquilerController,
+  obtenerClienteDNIController,
 };
