@@ -130,6 +130,15 @@ class Alquiler {
       throw error;
     }
   }
+  async obtenerNumeroAlquileres() {
+    try {
+      const connection = await this.connect();
+      const resultado = await connection.countDocuments();
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export { Alquiler };

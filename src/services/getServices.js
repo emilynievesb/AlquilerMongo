@@ -89,6 +89,11 @@ const obtenerNumeroCarrosSucursal = async () => {
   return await sucursal_automovil.obtenerNumeroCarrosSucursal();
 };
 
+const obtenerNumeroAlquileres = async () => {
+  const alquileres = new Alquiler();
+  return await alquileres.obtenerNumeroAlquileres();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -106,4 +111,5 @@ export {
   obtenerClientesConAlquiler,
   obtenerCarros,
   obtenerNumeroCarrosSucursal,
+  obtenerNumeroAlquileres,
 };
