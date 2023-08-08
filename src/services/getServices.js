@@ -58,6 +58,11 @@ const obtenerCarrosGrandes = async () => {
   return await automoviles.obtenerCarrosGrandes();
 };
 
+const obtenerAlquilerFechaInicio = async () => {
+  const alquiler = new Alquiler();
+  return await alquiler.obtenerAlquilerFechaInicio();
+};
+
 export {
   obtenerClientes,
   obtenerCarrosDisponibles,
@@ -69,4 +74,5 @@ export {
   obtenerCostoAlquiler,
   obtenerClienteDNI,
   obtenerCarrosGrandes,
+  obtenerAlquilerFechaInicio,
 };
