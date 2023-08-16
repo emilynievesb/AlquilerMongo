@@ -22,6 +22,7 @@ import {
   obtenerVendedoresController,
 } from "../controllers/getControllers.js";
 import { limitPets, limitSize } from "../utils/limit.js";
+import { obtenerDetallesAlquilerDTO } from "./DTO/getDto.js";
 
 const getInitRoute = () => {
   const router = Router();
@@ -53,6 +54,7 @@ const getInitRoute = () => {
     "/obtenerDetallesAlquiler",
     limitPets,
     limitSize,
+    obtenerDetallesAlquilerDTO,
     obtenerDetallesAlquilerController
   );
   router.get(

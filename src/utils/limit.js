@@ -5,7 +5,7 @@ const limitSize = (req, res, next) => {
   const contentLength = req.headers["content-length"];
   if (contentLength > payloadSizeLimit) {
     return res.status(413).json({
-      message: "Payload too large.",
+      message: "Body too large.",
     });
   }
   next();
