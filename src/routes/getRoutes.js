@@ -23,6 +23,7 @@ import {
 } from "../controllers/getControllers.js";
 import { limitPets, limitSize } from "../utils/limit.js";
 import {
+  obtenerClienteDNIDTO,
   obtenerCostoAlquilerDTO,
   obtenerDetallesAlquilerDTO,
 } from "./DTO/getDto.js";
@@ -83,6 +84,7 @@ const getInitRoute = () => {
     "/obtenerClienteDNI",
     limitPets,
     limitSize,
+    obtenerClienteDNIDTO,
     obtenerClienteDNIController
   );
   router.get(
