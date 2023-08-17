@@ -24,6 +24,7 @@ import {
 import { limitPets, limitSize } from "../utils/limit.js";
 import {
   obtenerClienteDNIDTO,
+  obtenerClienteReservaDTO,
   obtenerCostoAlquilerDTO,
   obtenerDetallesAlquilerDTO,
   obtenerReservasPendientesClienteDTO,
@@ -142,6 +143,7 @@ const getInitRoute = () => {
     "/obtenerClienteDeReserva",
     limitPets,
     limitSize,
+    obtenerClienteReservaDTO,
     obtenerClienteReservaController
   );
   router.get(
