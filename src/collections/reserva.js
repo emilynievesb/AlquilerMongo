@@ -8,7 +8,14 @@ class Reserva {
   Fecha_Inicio;
   Fecha_Fin;
   Estado;
-  constructor() {}
+  constructor() {
+    this.ID_Cliente = 5;
+    this.ID_Automovil = 2;
+    this.Fecha_Reserva = "2022-10-20";
+    this.Fecha_Inicio = "2022-11-12";
+    this.Fecha_Fin = "2022-11-15";
+    this.Estado = 1;
+  }
   async connect() {
     try {
       const result = await connection("reserva");

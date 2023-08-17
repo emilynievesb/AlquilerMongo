@@ -8,7 +8,14 @@ export default class Cliente {
   Direccion;
   Telefono;
   Email;
-  constructor() {}
+  constructor() {
+    this.Nombre = "Emily";
+    this.Apellido = "Nieves";
+    this.DNI = "1097488018";
+    this.Direccion = "Calle 100";
+    this.Telefono = 3161616111;
+    this.Email = "emily@gmail.com";
+  }
   async connect() {
     try {
       const result = await connection("cliente");

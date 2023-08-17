@@ -5,7 +5,11 @@ export default class Sucursal_automovil {
   ID_Sucursal;
   ID_Automovil;
   Cantidad_Disponible;
-  constructor() {}
+  constructor() {
+    this.ID_Sucursal = 2;
+    this.ID_Automovil = 4;
+    this.Cantidad_Disponible = 1;
+  }
   async connect() {
     try {
       const result = await connection("sucursal_automovil");

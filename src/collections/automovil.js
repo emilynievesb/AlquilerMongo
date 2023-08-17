@@ -1,7 +1,20 @@
 import connection from "../utils/connect.js";
 
 class Automovil {
-  constructor() {}
+  Marca;
+  Modelo;
+  Anio;
+  Tipo;
+  Capacidad;
+  Precio_diario;
+  constructor() {
+    this.Marca = "Mazda";
+    this.Modelo = "323NX";
+    this.Anio = 1995;
+    this.Tipo = "Clasico";
+    this.Capacidad = "4";
+    this.Precio_diario = 30000;
+  }
   async connect() {
     try {
       const result = await connection("automovil");

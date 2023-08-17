@@ -1,7 +1,21 @@
 import connection from "../utils/connect.js";
 
 class Empleado {
-  constructor() {}
+  _id;
+  Nombre;
+  Apellido;
+  DNI;
+  Direccion;
+  Telefono;
+  Cargo;
+  constructor() {
+    this.Nombre = "Karen";
+    this.Apellido = "Urbano";
+    this.DNI = 31666666;
+    this.Direccion = "Cra 115";
+    this.Telefono = 3023635888;
+    this.Cargo = "Gerente";
+  }
   async connect() {
     try {
       const result = await connection("empleado");

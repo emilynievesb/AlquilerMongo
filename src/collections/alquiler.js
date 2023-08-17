@@ -4,11 +4,17 @@ class Alquiler {
   id;
   ID_Cliente;
   ID_Automovil;
-  Fecha_Reserva;
   Fecha_Inicio;
   Fecha_Fin;
+  Costo_Total;
   Estado;
-  constructor() {}
+  constructor() {
+    this.ID_Cliente = 5;
+    this.ID_Automovil = 2;
+    this.Fecha_Inicio = "2022-11-12";
+    this.Fecha_Fin = "2022-11-15";
+    this.Costo_Total = 120000;
+  }
   async connect() {
     try {
       const result = await connection("alquiler");
@@ -91,11 +97,11 @@ class Alquiler {
   async obtenerAlquilerFechaInicio() {
     try {
       const connection = await this.connect();
-      const resultado = await connection
-        .find({ Fecha_Inicio: { $eq: "2024-05-10" } })
+      const resultado = await connection.find({ Fecha_Inicio: { $eq: "2024-05-10" } })
         .toArray();
       return resultado;
     } catch (error) {
+      console.log(error.message);
       throw error;
     }
   }
