@@ -29,6 +29,15 @@ import {
   obtenerDetallesAlquilerDTO,
   obtenerReservasPendientesClienteDTO,
 } from "./DTO/getDto.js";
+import {
+  authorizationMiddleware,
+  contentMiddlewareAlquiler,
+  contentMiddlewareAutomovil,
+  contentMiddlewareCliente,
+  contentMiddlewareEmpleado,
+  contentMiddlewareReserva,
+  contentMiddlewareSucursal,
+} from "../utils/token.js";
 
 const getInitRoute = () => {
   const router = Router();
@@ -36,30 +45,40 @@ const getInitRoute = () => {
     "/obtenerClientes",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareCliente,
     obtenerClientesController
   );
   router.get(
     "/obtenerCarrosDisponibles",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAutomovil,
     obtenerCarrosDisponiblesController
   );
   router.get(
     "/obtenerAlquileresActivos",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAlquiler,
     obtenerAlquileresActivosController
   );
   router.get(
     "/obtenerReservasPendientes",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareReserva,
     obtenerReservasPendientesController
   );
   router.get(
     "/obtenerDetallesAlquiler",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAlquiler,
     obtenerDetallesAlquilerDTO,
     obtenerDetallesAlquilerController
   );
@@ -67,18 +86,24 @@ const getInitRoute = () => {
     "/obtenerVendedores",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareEmpleado,
     obtenerVendedoresController
   );
   router.get(
     "/numeroAutosDisponibles",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAutomovil,
     obtenerNumeroCarrosController
   );
   router.get(
     "/obtenerCostoAlquiler",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAlquiler,
     obtenerCostoAlquilerDTO,
     obtenerCostoAlquilerController
   );
@@ -86,6 +111,8 @@ const getInitRoute = () => {
     "/obtenerClienteDNI",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareCliente,
     obtenerClienteDNIDTO,
     obtenerClienteDNIController
   );
@@ -93,18 +120,24 @@ const getInitRoute = () => {
     "/obtenerCarrosGrandes",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAutomovil,
     obtenerCarrosGrandesController
   );
   router.get(
     "/obtenerAlquilerFechaInicio",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAlquiler,
     obtenerAlquilerFechaInicioController
   );
   router.get(
     "/obtenerReservasPendientesCliente",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareReserva,
     obtenerReservasPendientesClienteDTO,
     obtenerReservasPendientesClienteController
   );
@@ -112,37 +145,52 @@ const getInitRoute = () => {
     "/obtenerGerentes",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareEmpleado,
     obtenerGerentesController
   );
   router.get(
     "/obtenerClientesConAlquiler",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAlquiler,
     obtenerClientesConAlquilerController
   );
-  router.get("/obtenerCarros", limitPets, limitSize, obtenerCarrosController);
+  router.get("/obtenerCarros", limitPets, limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAutomovil,
+    obtenerCarrosController);
   router.get(
     "/obtenerNumeroCarrosSucursal",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareSucursal,
     obtenerNumeroCarrosSucursalController
   );
   router.get(
     "/obtenerNumeroAlquileres",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAlquiler,
     obtenerNumeroAlquileresController
   );
   router.get(
     "/obtenerCarrosGrandesDisponibles",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAutomovil,
     obtenerCarrosGrandesDisponiblesController
   );
   router.get(
     "/obtenerClienteDeReserva",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareEmpleado,
     obtenerClienteReservaDTO,
     obtenerClienteReservaController
   );
@@ -150,6 +198,8 @@ const getInitRoute = () => {
     "/obtenerAlquileresEntreFechas",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareAlquiler,
     obtenerAlquileresEntreFechasController
   );
   return router;

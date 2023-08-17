@@ -97,7 +97,8 @@ class Alquiler {
   async obtenerAlquilerFechaInicio() {
     try {
       const connection = await this.connect();
-      const resultado = await connection.find({ Fecha_Inicio: { $eq: "2024-05-10" } })
+      const resultado = await connection
+        .find({ Fecha_Inicio: { $eq: "2024-05-10" } })
         .toArray();
       return resultado;
     } catch (error) {
