@@ -747,3 +747,41 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
           }
       ]
       ```
+
+# DTO con YUP
+
+## Validación de datos (DTO)
+
+- Se realizó la validación de datos a través de la librería `YUP`. La librería Yup permite definir un esquema que describe la forma en que los datos deben ser validados.
+
+- Al utilizar Yup para los DTO, puedes definir un esquema que especifique las reglas de validación que se deben aplicar a cada campo del DTO. Estas reglas pueden incluir validaciones como requerido, tipo de dato, longitud mínima o máxima, formato específico, entre otros.
+
+- Un ejemplo de uno de los esquemas que se pueden crear es este:
+
+  ```
+  const addProductValidator = async (req, res, next) => {
+    try {
+      const productSchema = object({
+        nombre: string()
+          .strict()
+          .matches(/^[a-z A-Z]+$/, "Is not in correct format")
+          .required(),
+        descripcion: string().optional(),
+        estado: number().max(1).required(),
+        created_by: number().nullable().optional(),
+        update_by: number().nullable().optional(),
+        created_at: date().nullable().optional(),
+        updated_at: date().nullable().optional(),
+        deleted_at: date().nullable().optional(),
+      });
+      await productSchema.validate(req.body);
+      next();
+    } catch (error) {
+      res.status(400).json({ status: "fail", message: error.errors });
+    }
+  };
+  ```
+
+- Se creó un middleware, donde se valida la composición de los datos dentro de la request. Se instancia un objeto que describe el esquema de la request y se valida el body o el query según lo escrito en el esquema. El `validate()` es una promesa que generas una excepción en caso de no pasar la validación, y dentro del catch se hace la validación de excepciones, respondiendo un status `400` y un mensaje de error. Si la request sale OK, se ejecuta un `next`, que le avisa a express de debe ejecutar el siguiente middleware (en este caso, el endpoint o servicio que genera y responde a una consulta).
+
+### Autora: Emily Nieves
