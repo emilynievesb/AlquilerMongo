@@ -26,6 +26,7 @@ import {
   obtenerClienteDNIDTO,
   obtenerCostoAlquilerDTO,
   obtenerDetallesAlquilerDTO,
+  obtenerReservasPendientesClienteDTO,
 } from "./DTO/getDto.js";
 
 const getInitRoute = () => {
@@ -103,6 +104,7 @@ const getInitRoute = () => {
     "/obtenerReservasPendientesCliente",
     limitPets,
     limitSize,
+    obtenerReservasPendientesClienteDTO,
     obtenerReservasPendientesClienteController
   );
   router.get(

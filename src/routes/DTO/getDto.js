@@ -36,8 +36,22 @@ const obtenerClienteDNIDTO = async (req, res, next) => {
   }
 };
 
+const obtenerReservasPendientesClienteDTO = async (req, res, next) => {
+  try {
+    const productSchema = object({
+      ID_Cliente: number()
+        .positive()
+        .required("El ID_Cliente a buscar es requerido"),
+    });
+    await productSchema.validate(req.query);
+    next();
+  } catch (error) {
+    res.status(400).json({ status: "fail", message: error.errors });
+  }
+};
 export {
   obtenerDetallesAlquilerDTO,
   obtenerCostoAlquilerDTO,
   obtenerClienteDNIDTO,
+  obtenerReservasPendientesClienteDTO,
 };
