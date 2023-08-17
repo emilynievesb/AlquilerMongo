@@ -13,7 +13,6 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente en tu máquina:
 
 Además de esto, es necesario mencionar que los paquetes usados fueron las siguientes:
 
-- cookie-parser: Para el manejo de las cookies al momento de realizar la autenticación respectiva en cada ruta necesaria.
 - dotenv: Para usar variables de entorno.
 - express: Para realizar el montaje del servidor y de la api como tal.
 - jose: Para el uso del Json Web Token (JWT).
