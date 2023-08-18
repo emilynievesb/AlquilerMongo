@@ -46,10 +46,15 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
         npm run dev
 
+## Autorización
+
+Para ejecutar correctamente los endpoints, debes obtener el token de cada tabla antes de hacer la consulta, por lo que en el apartado de los endpoints dejaremos escrita la url a ejecutar antes, y debes copiar el token en el header de autorización.
+
 ## Endpoints de obtención de información
 
 1.  Obtener clientes
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cliente`
     - URL: `http://127.20.20.1:5000/api/get/obtenerClientes`
     - Método: `GET`
     - Datos de entrada (query): Ninguno.
@@ -107,6 +112,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener carros disponibles
 
+    - Authorization: `http://127.20.20.1:5000/api/token/automovil`
     - URL: `http://127.20.20.1:5000/api/get/obtenerCarrosDisponibles`
     - Método: `GET`
     - Datos de entrada (query): Ninguno.
@@ -166,6 +172,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener alquileres activos
 
+    - Authorization: `http://127.20.20.1:5000/api/token/alquiler`
     - URL: `http://127.20.20.1:5000/api/get/obtenerAlquileresActivos`
     - Método: `GET`
     - Datos de entrada (query): Ninguno.
@@ -210,6 +217,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener reservas pendientes
 
+    - Authorization: `http://127.20.20.1:5000/api/token/reserva`
     - URL: `http://127.20.20.1:5000/api/get/obtenerReservasPendientes`
     - Método: `GET`
     - Datos de entrada (query): Ninguno.
@@ -245,6 +253,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener detalles de un alquiler en específico
 
+    - Authorization: `http://127.20.20.1:5000/api/token/alquiler`
     - URL: `http://127.20.20.1:5000/api/get/obtenerDetallesAlquiler?id=1`
     - Método: `GET`
     - Datos de entrada (query): id a consultar.
@@ -265,6 +274,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener empleados que sean vendedores
 
+    - Authorization: `http://127.20.20.1:5000/api/token/empleado`
     - URL: `http://127.20.20.1:5000/api/get/obtenerVendedores`
     - Método: `GET`
     - Datos de entrada (query): Ninguno.
@@ -285,6 +295,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener número de autos disponibles por sucursal
 
+    - Authorization: `http://127.20.20.1:5000/api/token/automovil`
     - URL: `http://127.20.20.1:5000/api/get/numeroAutosDisponibles`
     - Método: `GET`
     - Datos de entrada (query): Ninguno.
@@ -308,6 +319,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener costo de alquiler
 
+    - Authorization: `http://127.20.20.1:5000/api/token/alquiler`
     - URL: `http://127.20.20.1:5000/api/get/obtenerCostoAlquiler?id=1`
     - Método: `GET`
     - Datos de entrada (query): id a consultar.
@@ -328,6 +340,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener cliente por DNI
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cliente`
     - URL: `http://127.20.20.1:5000/api/get/obtenerClienteDNI?DNI=123456789`
     - Método: `GET`
     - Datos de entrada (query): DNI a consultar.
@@ -348,6 +361,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener carros grandes
 
+    - Authorization: `http://127.20.20.1:5000/api/token/automovil`
     - URL: `http://127.20.20.1:5000/api/get/obtenerCarrosGrandes`
     - Método: `GET`
     - Datos de entrada (query): Ninguno.
@@ -395,6 +409,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener alquiler con fecha de inicio 2024-05-10
 
+    - Authorization: `http://127.20.20.1:5000/api/token/alquiler`
     - URL: `http://127.20.20.1:5000/api/get/obtenerAlquilerFechaInicio`
     - Método: `GET`
     - Datos de entrada (query): Ninguno.
@@ -424,6 +439,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
 1.  Obtener reservas pendientes por cliente
 
+    - Authorization: `http://127.20.20.1:5000/api/token/reserva`
     - URL: `http://127.20.20.1:5000/api/get/obtenerReservasPendientesCliente?ID_Cliente=1`
     - Método: `GET`
     - Datos de entrada (query): ID_Cliente a consultar.
@@ -446,6 +462,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
       ```
 
 1.  Obtener trabajadores que sean gerentes
+    - Authorization: `http://127.20.20.1:5000/api/token/empleado`
     - URL: `http://127.20.20.1:5000/api/get/obtenerGerentes`
     - Método: `GET`
     - Datos de entrada (query): ninguno.
@@ -464,6 +481,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
       ]
       ```
 1.  Obtener clientes con alquiler activo
+    - Authorization: `http://127.20.20.1:5000/api/token/alquiler`
     - URL: `http://127.20.20.1:5000/api/get/obtenerClientesConAlquiler`
     - Método: `GET`
     - Datos de entrada (query): ninguno.
@@ -548,6 +566,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
       ]
       ```
 1.  Obtener carros en orden
+    - Authorization: `http://127.20.20.1:5000/api/token/automovil`
     - URL: `http://127.20.20.1:5000/api/get/obtenerCarros`
     - Método: `GET`
     - Datos de entrada (query): ninguno.
@@ -602,6 +621,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
       ]
       ```
 1.  Obtener número de carros en cada sucursal
+    - Authorization: `http://127.20.20.1:5000/api/token/sucursal`
     - URL: `http://127.20.20.1:5000/api/get/obtenerNumeroCarrosSucursal`
     - Método: `GET`
     - Datos de entrada (query): ninguno.
@@ -626,6 +646,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
       ]
       ```
 1.  Obtener número de alquileres hechos
+    - Authorization: `http://127.20.20.1:5000/api/token/alquiler`
     - URL: `http://127.20.20.1:5000/api/get/obtenerNumeroAlquileres`
     - Método: `GET`
     - Datos de entrada (query): ninguno.
@@ -634,6 +655,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
       5
       ```
 1.  Obtener carros grandes disponibles
+    - Authorization: `http://127.20.20.1:5000/api/token/automovil`
     - URL: `http://127.20.20.1:5000/api/get/obtenerCarrosGrandesDisponibles`
     - Método: `GET`
     - Datos de entrada (query): ninguno.
@@ -667,6 +689,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
       ]
       ```
 1.  Obtener cliente que realizó una reserva
+    - Authorization: `http://127.20.20.1:5000/api/token/reserva`
     - URL: `http://127.20.20.1:5000/api/get/obtenerClienteDeReserva?id=1`
     - Método: `GET`
     - Datos de entrada (query): id de la reserva a consultar.
@@ -693,6 +716,7 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
       ]
       ```
 1.  Obtener reserva realizada entre 2024-01-05 y 2024-06-10
+    - Authorization: `http://127.20.20.1:5000/api/token/alquiler`
     - URL: `http://127.20.20.1:5000/api/get/obtenerAlquileresEntreFechas`
     - Método: `GET`
     - Datos de entrada (query): ninguno.
