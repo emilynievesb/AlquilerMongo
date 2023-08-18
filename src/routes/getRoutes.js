@@ -157,10 +157,14 @@ const getInitRoute = () => {
     contentMiddlewareAlquiler,
     obtenerClientesConAlquilerController
   );
-  router.get("/obtenerCarros", limitPets, limitSize,
+  router.get(
+    "/obtenerCarros",
+    limitPets,
+    limitSize,
     authorizationMiddleware,
     contentMiddlewareAutomovil,
-    obtenerCarrosController);
+    obtenerCarrosController
+  );
   router.get(
     "/obtenerNumeroCarrosSucursal",
     limitPets,
@@ -190,7 +194,7 @@ const getInitRoute = () => {
     limitPets,
     limitSize,
     authorizationMiddleware,
-    contentMiddlewareEmpleado,
+    contentMiddlewareReserva,
     obtenerClienteReservaDTO,
     obtenerClienteReservaController
   );
